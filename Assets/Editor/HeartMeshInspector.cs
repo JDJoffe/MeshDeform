@@ -48,6 +48,13 @@ public class HeartMeshInspector : Editor
         // unselected vertex
         if (!mesh.selectedIndices.Contains(index))
         {
+            // sets and diaplays the vertices of the mesh
+            Handles.color = Color.blue;
+            if (Handles.Button(point,handleRotation,mesh.pickSize,mesh.pickSize,Handles.DotHandleCap))
+            {
+                // adds the selected index to the mesh.selectedindices
+                mesh.selectedIndices.Add(index);
+            }
         }
     }
 
@@ -67,6 +74,11 @@ public class HeartMeshInspector : Editor
                     Debug.DrawLine(handleTransform.TransformPoint(verts[i]), handleTransform.TransformPoint(normals[i]), Color.green, 4.0f, true);
                 }
             }
+        }
+        //reset button in script
+        if (GUILayout.Button("Clear selected vertices"))
+        {
+            mesh.ClearAllData();
         }
     }
 
