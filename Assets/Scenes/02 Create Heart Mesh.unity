@@ -1238,9 +1238,9 @@ MonoBehaviour:
   - {x: -0.18864718, y: 0.38195315, z: -0.9047232}
   - {x: -0.19659972, y: 0.19652292, z: -0.96058697}
   isMeshReady: 0
-  isEditMode: 1
-  showTransformHandle: 1
-  selectedIndices: aa010000ee0000009c010000
+  isEditMode: 0
+  showTransformHandle: 0
+  selectedIndices: aa010000ee000000
   pickSize: 0.01
   radiusOfEffect: 0.7
   pullValue: 0.13
