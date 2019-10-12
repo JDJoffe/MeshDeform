@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a960743a1b2f6456c9297699a11b5099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetIndex: 0
+  targetIndex: 210
   targetVertex: {x: 0, y: 0, z: 0}
   oVertices:
   - {x: 0.28782713, y: -0.28782713, z: -0.28782713}
@@ -1526,8 +1526,8 @@ MonoBehaviour:
   - {x: -0.18864718, y: 0.38195315, z: -0.9047232}
   - {x: -0.19659972, y: 0.19652292, z: -0.96058697}
   editType: 0
-  showTransformHandle: 1
-  selectedIndices: 
+  showTransformHandle: 0
+  selectedIndices: ae010000f0010000d2000000
   pickSize: 0.01
   radiusofeffect: 0.3
   pullvalue: 0.3
