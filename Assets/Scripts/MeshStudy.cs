@@ -29,6 +29,7 @@ public class MeshStudy : MonoBehaviour
     void Start()
     {
         InitMesh();
+        Reset();
     }
 
     public void InitMesh()
