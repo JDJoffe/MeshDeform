@@ -31,7 +31,7 @@ public class MeshStudy : MonoBehaviour
         InitMesh();
         Reset();
     }
-
+    // call on start
     public void InitMesh()
     {
         oMeshFilter = GetComponent<MeshFilter>();
@@ -44,7 +44,7 @@ public class MeshStudy : MonoBehaviour
         cMesh.normals = oMesh.normals;
         cMesh.uv = oMesh.uv;
         oMeshFilter.mesh = cMesh;
-       
+       // set var to be the cmesh var
         vertices = cMesh.vertices;
         triangles = cMesh.triangles;
         isCloned = true;
@@ -54,6 +54,7 @@ public class MeshStudy : MonoBehaviour
 
     public void Reset()
     {
+        // if cmesh exists reset all it's values
         if (cMesh != null && oMesh != null)
         {
             cMesh.vertices = oMesh.vertices;
@@ -147,7 +148,7 @@ public class MeshStudy : MonoBehaviour
     }
 
    
-    
+    // pull the vertexes around the v3 point to stop mesh breaking
     private void PullSimilarVertices(int index, Vector3 newPos)
     {
         // get target vertex position

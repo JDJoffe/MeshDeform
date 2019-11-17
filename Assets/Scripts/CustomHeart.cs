@@ -47,7 +47,7 @@ public class CustomHeart : MonoBehaviour
     float runtime = 0f;
     int currentIndex = 0;
 
-
+    // swap between curve types
     public enum CurveType
     {
         Curve1,
@@ -59,12 +59,12 @@ public class CustomHeart : MonoBehaviour
     {
         Init();
     }
-
+    // setup mesh
     public void Init()
     {
         oFilter = GetComponent<MeshFilter>();
         currentIndex = 0;
-
+        // if you are addint indices or removing indices
         if (editType == EditType.AddIndices || editType == EditType.RemoveIndices)
         {
             oMesh = oFilter.sharedMesh;
@@ -95,7 +95,7 @@ public class CustomHeart : MonoBehaviour
             StartDisplacement();
         }
     }
-
+    // change displacement
     public void StartDisplacement()
     {
         targetVertex = mVertices[selectedIndices[currentIndex]];

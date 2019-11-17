@@ -28,6 +28,7 @@ public class HeartMesh : MonoBehaviour
     public bool isMeshReady = false;
     public bool isEditMode = true;
     public bool showTransformHandle = true;
+    // selected positions
     public List<int> selectedIndices = new List<int>();
     public float pickSize = 0.01f;
 
@@ -50,6 +51,7 @@ public class HeartMesh : MonoBehaviour
         isMeshReady = false;
 
         currentIndex = 0;
+        // if in editmode in unity
         if (isEditMode)
         {
             oMesh = oFilter.sharedMesh;
