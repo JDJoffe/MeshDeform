@@ -66,6 +66,7 @@ public class HeartMesh : MonoBehaviour
             normals = cMesh.normals;
             Debug.Log("Init & Cloned");
         }
+        // if not in editmode run startdisplacement and get all meshvertiices
         else
         {
             oMesh = oFilter.mesh;
@@ -80,7 +81,7 @@ public class HeartMesh : MonoBehaviour
         }
 
     }
-
+    // set set vars
     public void StartDisplacement()
     {
         targetVertex = oVertices[selectedIndices[currentIndex]];
@@ -119,21 +120,25 @@ public class HeartMesh : MonoBehaviour
             }
         }
     }
-
+    // values set in fixed update if the runtime is less than duration
     void DisplaceVertices(Vector3 targetVertexPos, float force, float radius)
     {
         Vector3 currentVertexPos = Vector3.zero;
         float sqrRadius = radius * radius;
-
+        // run through all mvertices
         for (int i = 0; i < mVertices.Length; i++)
         {
             currentVertexPos = mVertices[i];
+            // target vertex pos is gotten from fixed update
+            // sqrmag = the cur vertex position - the target vertex pos.magnitude
             float sqrMagnitude = (currentVertexPos - targetVertexPos).sqrMagnitude;
             if (sqrMagnitude > sqrRadius)
             {
                 continue;               
             }
+            // if sqrmag more than sqrrad set gaussfalloff's distance to be mathf.sqrt of sqr mag
             float distance = Mathf.Sqrt(sqrMagnitude);
+            // maybe make a enum to swap between the different falloff types??
             float falloff = GaussFalloff(distance, radius);
             Vector3 translate = (currentVertexPos * force) * falloff; //6
             translate.z = 0f;
