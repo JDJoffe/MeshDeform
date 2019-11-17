@@ -72,10 +72,11 @@ public class MeshStudy : MonoBehaviour
     {
         connectedVertices = new List<int>[vertices.Length];
     }
-
+    // call function on click
     public void DoAction(int index, Vector3 localPos)
     {
         // specify methods here
+        // comment our if you dont want meshes to break
         //PullOneVertex(index, localPos);
 
         PullSimilarVertices(index, localPos);

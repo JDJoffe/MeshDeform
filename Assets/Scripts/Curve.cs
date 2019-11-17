@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections;
-
+// get the curve information from customheart script  
 public class Curve
 {
     public Vector3[] points = new Vector3[3];
     public bool drawCurve = false;
-
+    // paramaters that are set in the customheart script
     public Curve(Vector3 p0, Vector3 p1, Vector3 p2, bool tdraw)
     {
         drawCurve = tdraw;
@@ -24,7 +24,7 @@ public class Curve
             }
         }
     }
-
+    // values set in customheart displace vertices, float t becomes mathf.sqrt.magnitude
     public Vector3 GetPoint(float t)
     {
         t = Mathf.Clamp01(t);

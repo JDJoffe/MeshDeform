@@ -53,6 +53,7 @@ public class CustomHeart : MonoBehaviour
         Curve1,
         Curve2
     }
+    // reference to curve script
     public CurveType curveType;
     Curve curve;
     void Start()
@@ -114,26 +115,31 @@ public class CustomHeart : MonoBehaviour
 
     void FixedUpdate()
     {
+        // dont run if isanimate isnt set to true from start
         if (!isAnimate)
         {
             return;
         }
 
         runtime = Time.time - starttime;
-
+        // if runtime is less than 1.2f
         if (runtime < duration)
         {
             Vector3 relativePoint = oFilter.transform.InverseTransformPoint(targetVertex);
+            // displace vertices pos = mesh point that is targeted position
             DisplaceVertices(relativePoint, pullvalue, radiusofeffect);
         }
+         
         else
         {
+            // run start displacement
             currentIndex++;
             if (currentIndex < selectedIndices.Count)
             {
                 StartDisplacement();
                 Debug.Log("next");
             }
+            // set the object to be inanimate
             else
             {
                 oMesh = GetComponent<MeshFilter>().sharedMesh;
@@ -150,9 +156,11 @@ public class CustomHeart : MonoBehaviour
 
         for (int i = 0; i < mVertices.Length; i++)
         {
+            // sqrmag = current vertice selected - the position of that vertice.sqrmagnitude
             float sqrMagnitude = (mVertices[i] - pos).sqrMagnitude;
             if (sqrMagnitude > sqrRadius)
             {
+                // increment i and dont run what is after continue
                 continue;
             }
             vert = mVertices[i];
@@ -161,6 +169,7 @@ public class CustomHeart : MonoBehaviour
             // get curve pos by the distance and multiply y by force to get
             // the value it will increment by
             // v3 to store increment info and apply the transform to mvertices[i]
+            // set the increment to be the distance of getpoint in curve * by force
             float increment = curve.GetPoint(distance).y * force; 
             Vector3 translate = (vert * increment) * Time.deltaTime; 
             Quaternion rotation = Quaternion.Euler(translate);
@@ -170,14 +179,14 @@ public class CustomHeart : MonoBehaviour
         oMesh.vertices = mVertices;
         oMesh.RecalculateNormals();
     }
-
+    // clear all selected indices & reset 
     public void ClearAllData()
     {
         selectedIndices = new List<int>();
         targetIndex = 0;
         targetVertex = Vector3.zero;
     }
-
+    // change curve values in curve script
     void CurveType1()
     {
         //  \ (0,1,0)   
@@ -195,10 +204,10 @@ public class CustomHeart : MonoBehaviour
         curvePoints[1] = new Vector3(.5f, .5f, 0);
         // end  point at bottom right
         curvePoints[2] = new Vector3(1, 0, 0);
-        // tdraw false, previous drawn curve can be seen it tdraw is true
+        // tdraw parameter false, previous drawn curve can be seen it tdraw parameter is true
         curve = new Curve(curvePoints[0], curvePoints[1], curvePoints[2], false);
     }
-
+    // change curve values in curve script
     void CurveType2()
     {
         //      _ (.5,1,0)
